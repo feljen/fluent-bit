@@ -322,6 +322,7 @@ static void cb_datadog_flush(const void *data, size_t bytes,
                          tag, tag_len,
                          data, bytes,
                          &out_buf, &out_size);
+    flb_plg_debug(ctx->ins, "datadog formatted payload: %s", ret)
     if (ret == -1) {
         flb_upstream_conn_release(upstream_conn);
         FLB_OUTPUT_RETURN(FLB_ERROR);
